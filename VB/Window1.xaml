@@ -1,0 +1,45 @@
+﻿<Window x:Class="ConditionalRowFormatting.Window1" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" xmlns:local="clr-namespace:ConditionalRowFormatting" xmlns:coll="clr-namespace:System.Collections;assembly=mscorlib" Title="Window1" Height="430" Width="610">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BackgroundStyle" BasedOn="{StaticResource {dxg:GridRowThemeKey ResourceKey=RowStyle}}" TargetType="{x:Type dxg:GridRowContent}">
+                <Setter Property="Background" Value="{Binding Path=DataContext.Column2, Converter={local:ColorValueConverter MaxValue=25}}" />
+            </Style>
+            <coll:ArrayList x:Key="Data">
+                <local:SimpleData Column1="text 1" Column2="0"></local:SimpleData>
+                <local:SimpleData Column1="text 2" Column2="1"></local:SimpleData>
+                <local:SimpleData Column1="text 3" Column2="2"></local:SimpleData>
+                <local:SimpleData Column1="text 4" Column2="3"></local:SimpleData>
+                <local:SimpleData Column1="text 5" Column2="4"></local:SimpleData>
+                <local:SimpleData Column1="text 6" Column2="5"></local:SimpleData>
+                <local:SimpleData Column1="text 7" Column2="6"></local:SimpleData>
+                <local:SimpleData Column1="text 8" Column2="7"></local:SimpleData>
+                <local:SimpleData Column1="text 9" Column2="8"></local:SimpleData>
+                <local:SimpleData Column1="text 10" Column2="9"></local:SimpleData>
+                <local:SimpleData Column1="text 11" Column2="10"></local:SimpleData>
+                <local:SimpleData Column1="text 12" Column2="11"></local:SimpleData>
+                <local:SimpleData Column1="text 13" Column2="12"></local:SimpleData>
+                <local:SimpleData Column1="text 14" Column2="13"></local:SimpleData>
+                <local:SimpleData Column1="text 15" Column2="14"></local:SimpleData>
+                <local:SimpleData Column1="text 16" Column2="15"></local:SimpleData>
+                <local:SimpleData Column1="text 17" Column2="16"></local:SimpleData>
+                <local:SimpleData Column1="text 18" Column2="17"></local:SimpleData>
+                <local:SimpleData Column1="text 19" Column2="18"></local:SimpleData>
+                <local:SimpleData Column1="text 20" Column2="19"></local:SimpleData>
+            </coll:ArrayList>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <dxg:GridControl DataSource="{StaticResource Data}">
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Column1"></dxg:GridColumn>
+                <dxg:GridColumn FieldName="Column2"></dxg:GridColumn>
+            </dxg:GridControl.Columns>
+            <dxg:GridControl.View>
+                <dxg:TableView AutoWidth="True" AllowEditing="True" RowStyle="{StaticResource BackgroundStyle}">
+                </dxg:TableView>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+    </Grid>
+</Window>
