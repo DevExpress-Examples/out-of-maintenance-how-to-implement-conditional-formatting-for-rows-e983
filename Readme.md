@@ -1,3 +1,10 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [MainWindow.xaml](./CS/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/MainWindow.xaml))
+* [MainWindow.xaml.cs](./CS/MainWindow.xaml.cs) (VB: [MainWindow.xaml](./VB/MainWindow.xaml))
+* [SampleData.cs](./CS/SampleData.cs) (VB: [SampleData.vb](./VB/SampleData.vb))
+<!-- default file list end -->
 # How to: Implement conditional formatting for rows
 
 
