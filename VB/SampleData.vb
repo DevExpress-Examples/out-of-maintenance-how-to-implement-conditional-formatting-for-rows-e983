@@ -13,47 +13,59 @@
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E983
 
-
-Imports Microsoft.VisualBasic
+Imports DevExpress.Mvvm
 Imports System.Collections.Generic
+Imports System.Collections.ObjectModel
+Imports System.ComponentModel
 
 Namespace ConditionalRowFormatting
 	Public Class SimpleDataList
-		Inherits List(Of SimpleData)
-		Private initCount_Renamed As Integer
+		Inherits ObservableCollection(Of SimpleData)
+
+		Protected _InitCount As Integer
 		Public Property InitCount() As Integer
 			Get
-				Return Me.initCount_Renamed
+				Return Me._InitCount
 			End Get
+
 			Set(ByVal value As Integer)
-				Me.initCount_Renamed = value
-				Populate()
+				If Me._InitCount <> value Then
+					Me._InitCount = value
+					Populate()
+					OnPropertyChanged(New PropertyChangedEventArgs("InitCount"))
+				End If
 			End Set
 		End Property
+
 		Private Sub Populate()
 			Clear()
 			For i As Integer = 0 To InitCount - 1
 				Add(New SimpleData("Row " & i, i))
 			Next i
 		End Sub
+
+
 	End Class
 	Public Class SimpleData
-		Private privateText As String
+		Inherits BindableBase
+
+		Protected _Text As String
 		Public Property Text() As String
 			Get
-				Return privateText
+				Return Me._Text
 			End Get
 			Set(ByVal value As String)
-				privateText = value
+				Me.SetProperty(Me._Text, value, "Text")
 			End Set
 		End Property
-		Private privateInt As Integer
+
+		Protected _Int As Integer
 		Public Property Int() As Integer
 			Get
-				Return privateInt
+				Return Me._Int
 			End Get
 			Set(ByVal value As Integer)
-				privateInt = value
+				Me.SetProperty(Me._Int, value, "Int")
 			End Set
 		End Property
 		Public Sub New()

@@ -13,8 +13,6 @@
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E983
 
-
-Imports Microsoft.VisualBasic
 Imports System
 Imports System.Globalization
 Imports System.Windows
@@ -27,6 +25,7 @@ Namespace ConditionalRowFormatting
 
 	Partial Public Class MainWindow
 		Inherits Window
+
 		Public Sub New()
 			InitializeComponent()
 		End Sub

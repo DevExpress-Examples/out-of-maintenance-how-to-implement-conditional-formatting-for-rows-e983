@@ -13,13 +13,12 @@
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E983
 
-
-Imports Microsoft.VisualBasic
 Imports System.Windows
 
 Namespace ConditionalRowFormatting
 
 	Partial Public Class App
 		Inherits Application
+
 	End Class
 End Namespace
