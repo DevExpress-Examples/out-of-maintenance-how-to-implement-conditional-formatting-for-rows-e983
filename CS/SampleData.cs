@@ -13,27 +13,55 @@
 // You can find sample updates and versions for different programming languages here:
 // http://www.devexpress.com/example=E983
 
+using DevExpress.Mvvm;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace ConditionalRowFormatting {
-    public class SimpleDataList : List<SimpleData> {
-        private int initCount;
-        public int InitCount {
-            get { return this.initCount; }
-            set {
-                this.initCount = value;
-                Populate();
+    public class SimpleDataList : ObservableCollection<SimpleData> {
+        protected int _InitCount;
+        public int InitCount
+        {
+            get
+            {
+                return this._InitCount;
+            }
+
+            set
+            {
+                if (this._InitCount != value)
+                {
+                    this._InitCount = value;
+                    Populate();
+                    OnPropertyChanged(new PropertyChangedEventArgs("InitCount"));
+                }
             }
         }
+
         void Populate() {
             Clear();
             for(int i = 0; i < InitCount; i++)
                 Add(new SimpleData("Row " + i, i));
         }
+
+
     }
-    public class SimpleData {
-        public string Text { get; set; }
-        public int Int { get; set; }
+    public class SimpleData : BindableBase{
+
+        protected string _Text;
+        public string Text
+        {
+            get { return this._Text; }
+            set { this.SetProperty(ref this._Text, value, "Text"); }
+        }
+
+        protected int _Int;
+        public int Int
+        {
+            get { return this._Int; }
+            set { this.SetProperty(ref this._Int, value, "Int"); }
+        }
         public SimpleData() { }
         public SimpleData(string str, int num) {
             Text = str;
