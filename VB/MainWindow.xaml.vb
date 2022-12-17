@@ -1,4 +1,4 @@
-﻿' Developer Express Code Central Example:
+' Developer Express Code Central Example:
 ' How to implement conditional formatting for rows
 ' 
 ' The following sample demonstrates how to change the appearance of grid rows
@@ -12,22 +12,15 @@
 ' 
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E983
-
-Imports System
-Imports System.Globalization
 Imports System.Windows
-Imports System.Windows.Data
-Imports System.Windows.Markup
-Imports System.Windows.Media
-Imports DevExpress.Xpf.Grid
 
 Namespace ConditionalRowFormatting
 
-	Partial Public Class MainWindow
-		Inherits Window
+    Public Partial Class MainWindow
+        Inherits Window
 
-		Public Sub New()
-			InitializeComponent()
-		End Sub
-	End Class
+        Public Sub New()
+            Me.InitializeComponent()
+        End Sub
+    End Class
 End Namespace

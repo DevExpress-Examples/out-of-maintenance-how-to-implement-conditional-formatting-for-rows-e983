@@ -1,4 +1,4 @@
-﻿' Developer Express Code Central Example:
+' Developer Express Code Central Example:
 ' How to implement conditional formatting for rows
 ' 
 ' The following sample demonstrates how to change the appearance of grid rows
@@ -12,67 +12,72 @@
 ' 
 ' You can find sample updates and versions for different programming languages here:
 ' http://www.devexpress.com/example=E983
-
 Imports DevExpress.Mvvm
-Imports System.Collections.Generic
 Imports System.Collections.ObjectModel
 Imports System.ComponentModel
 
 Namespace ConditionalRowFormatting
-	Public Class SimpleDataList
-		Inherits ObservableCollection(Of SimpleData)
 
-		Protected _InitCount As Integer
-		Public Property InitCount() As Integer
-			Get
-				Return Me._InitCount
-			End Get
+    Public Class SimpleDataList
+        Inherits ObservableCollection(Of SimpleData)
 
-			Set(ByVal value As Integer)
-				If Me._InitCount <> value Then
-					Me._InitCount = value
-					Populate()
-					OnPropertyChanged(New PropertyChangedEventArgs("InitCount"))
-				End If
-			End Set
-		End Property
+        Protected _InitCount As Integer
 
-		Private Sub Populate()
-			Clear()
-			For i As Integer = 0 To InitCount - 1
-				Add(New SimpleData("Row " & i, i))
-			Next i
-		End Sub
+        Public Property InitCount As Integer
+            Get
+                Return _InitCount
+            End Get
 
+            Set(ByVal value As Integer)
+                If _InitCount <> value Then
+                    _InitCount = value
+                    Populate()
+                    OnPropertyChanged(New PropertyChangedEventArgs("InitCount"))
+                End If
+            End Set
+        End Property
 
-	End Class
-	Public Class SimpleData
-		Inherits BindableBase
+        Private Sub Populate()
+            Clear()
+            For i As Integer = 0 To InitCount - 1
+                Add(New SimpleData("Row " & i, i))
+            Next
+        End Sub
+    End Class
 
-		Protected _Text As String
-		Public Property Text() As String
-			Get
-				Return Me._Text
-			End Get
-			Set(ByVal value As String)
-				Me.SetProperty(Me._Text, value, "Text")
-			End Set
-		End Property
+    Public Class SimpleData
+        Inherits BindableBase
 
-		Protected _Int As Integer
-		Public Property Int() As Integer
-			Get
-				Return Me._Int
-			End Get
-			Set(ByVal value As Integer)
-				Me.SetProperty(Me._Int, value, "Int")
-			End Set
-		End Property
-		Public Sub New()
-		End Sub
-		Public Sub New(ByVal str As String, ByVal num As Integer)
-			Text = str
-			Int = num
-		End Sub
-	End Class
+        Protected _Text As String
+
+        Public Property Text As String
+            Get
+                Return _Text
+            End Get
+
+            Set(ByVal value As String)
+                SetProperty(_Text, value, "Text")
+            End Set
+        End Property
+
+        Protected _Int As Integer
+
+        Public Property Int As Integer
+            Get
+                Return _Int
+            End Get
+
+            Set(ByVal value As Integer)
+                SetProperty(_Int, value, "Int")
+            End Set
+        End Property
+
+        Public Sub New()
+        End Sub
+
+        Public Sub New(ByVal str As String, ByVal num As Integer)
+            Text = str
+            Int = num
+        End Sub
+    End Class
 End Namespace
